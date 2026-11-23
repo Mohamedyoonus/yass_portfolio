@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    // 90 is used for the hero portrait so it stays crisp; 75 for everything else
+    qualities: [75, 90],
+  },
   turbopack: {
     rules: {
       "*.css": {
