@@ -3,17 +3,20 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Icon } from "@/components/icons";
 
-type Status = "idle" | "sending" | "sent" | "mailto" | "error";
+type Status = "idle" | "sending" | "sent" | "mailto" | "whatsapp" | "error";
 
 const MESSAGES: Record<Status, string> = {
   idle: "",
   sending: "Sending…",
   sent: "Thanks! Your message is on its way — I'll reply soon.",
   mailto: "Opening your email app…",
+  whatsapp: "Opening WhatsApp — just tap send there and I'll reply soon.",
   error: "Something went wrong. Please email me directly instead.",
 };
 
-export function ContactForm({ email, endpoint }: { email: string; endpoint?: string }) {
+type ContactFormProps = { email: string; endpoint?: string; whatsapp?: string };
+
+export function ContactForm({ email, endpoint, whatsapp }: ContactFormProps) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -23,6 +26,19 @@ export function ContactForm({ email, endpoint }: { email: string; endpoint?: str
     const name = String(data.get("name") ?? "").trim();
     const from = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
+
+    // WhatsApp: open a chat with the message pre-filled. This runs before any
+    // await, so browsers treat the new tab as a direct click (not a popup).
+    if (whatsapp) {
+      const text = `Hi! I'm ${name} (${from}).\n\n${message}`;
+      const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
+      const tab = window.open(url, "_blank");
+      if (tab) tab.opener = null;
+      else window.location.href = url; // popup blocked: open in this tab
+      form.reset();
+      setStatus("whatsapp");
+      return;
+    }
 
     if (endpoint) {
       setStatus("sending");

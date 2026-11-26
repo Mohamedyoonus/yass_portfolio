@@ -47,7 +47,7 @@ function Portrait({ src, mask, width, height, name }: PortraitProps) {
             alt={`Portrait of ${name}`}
             width={width}
             height={height}
-            sizes="(max-width: 560px) 92vw, 500px"
+            sizes="(max-width: 600px) 100vw, (max-width: 1280px) 500px, 32vw"
             quality={90}
             preload
           />
@@ -104,13 +104,15 @@ export function CodeCard() {
 }
 
 export function Hero() {
-  const { name, roles, bio, available, availabilityText, resumeUrl, socials, heroBadges, photo } = portfolio;
+  const { name, roles, bio, available, resumeUrl, socials, heroBadges, photo } = portfolio;
+  // Optional: add `availabilityText: "Open to new opportunities"` in data/portfolio.ts to show the pill
+  const availabilityText = (portfolio as { availabilityText?: string }).availabilityText;
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className={photo ? "hero has-photo" : "hero"}>
       <div className="wrap hero-inner">
         <div className="hero-text">
-          {available && (
+          {available && availabilityText && (
             <div className="status-pill intro">
               <span className="dot" aria-hidden="true" />
               {availabilityText}

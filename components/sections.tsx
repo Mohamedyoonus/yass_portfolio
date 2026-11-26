@@ -204,7 +204,7 @@ export function Experience() {
 }
 
 export function Contact() {
-  const { email, socials, formEndpoint } = portfolio;
+  const { email, socials, formEndpoint, whatsapp } = portfolio;
   return (
     <section id="contact" className="section">
       <div className="wrap">
@@ -222,7 +222,7 @@ export function Contact() {
             <CopyEmail email={email} />
             <SocialLinks socials={socials} />
           </div>
-          <ContactForm email={email} endpoint={formEndpoint || undefined} />
+          <ContactForm email={email} endpoint={formEndpoint || undefined} whatsapp={whatsapp || undefined} />
         </div>
       </div>
     </section>
@@ -240,8 +240,7 @@ export async function Footer() {
     <footer className="footer">
       <div className="wrap footer-inner">
         <p>
-          © {year} {portfolio.name}. Designed &amp; built with <span className="heart">♥</span> using
-          Next.js.
+          © {year} {portfolio.name}. Designed &amp; built with <span className="heart">♥</span>.
         </p>
         <SocialLinks socials={portfolio.socials} className="socials-sm" />
         <a href="#home" className="to-top">

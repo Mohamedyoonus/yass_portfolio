@@ -50,7 +50,7 @@ function ProjectCard({ project: p, index }: { project: Project; index: number })
             src={p.image}
             alt={`${p.title} screenshot`}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="mock" aria-hidden="true">

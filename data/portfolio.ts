@@ -24,7 +24,7 @@ export type Project = {
   live?: string;
   colors: [string, string]; // gradient for the generated cover
   domain?: string; // shown in the mock browser bar
-  image?: string; // optional screenshot in /public, e.g. "/projects/zayit.png"
+  image?: string; // optional screenshot in /public, e.g. "/projects/zayit.webp"
   featured?: boolean;
 };
 
@@ -43,15 +43,14 @@ export type Certification = { title: string; issuer: string; date: string };
 
 export const portfolio = {
   // ---- Basics -------------------------------------------------------------
-  name: "Mohamed Yoonus M",
+  name: "Mohamed Yoonus",
   logo: "Yoonus",
   role: "Full Stack Developer",
   roles: ["Full Stack Developer", "Next.js Developer", "FastAPI Engineer", "Flutter Developer"],
-  bio: "I build enterprise ERP products end to end — React and Next.js front-ends, FastAPI and MongoDB back-ends, and Flutter mobile apps — from API design and role-based access control to production support.",
+  bio: "A passionate software developer dedicated to turning ideas into reliable, user-friendly digital products — writing clean, maintainable code and solving real-world problems through thoughtful engineering.",
   location: "Ramanathapuram, Tamil Nadu, India",
   email: "yoonusy655@gmail.com",
   available: true,
-  availabilityText: "Open to new opportunities",
   resumeUrl: "/resume.pdf", // drop resume.pdf into /public, or set "" to hide the button
 
   // Background-removed portrait shown in the hero (set to null to show the code card instead).
@@ -66,6 +65,11 @@ export const portfolio = {
   // Optional: a Formspree / Getform endpoint so the contact form sends
   // messages directly. Leave "" to open the visitor's email app instead.
   formEndpoint: "",
+
+  // WhatsApp number (country code + number, digits only). When set, "Send
+  // message" opens WhatsApp with the visitor's message already typed in.
+  // Set "" to fall back to the form endpoint / email app.
+  whatsapp: "917449112303",
 
   socials: [
     { name: "GitHub", url: "https://github.com/Mohamedyoonus", icon: "github" },
@@ -93,11 +97,11 @@ export const portfolio = {
 
   // ---- About --------------------------------------------------------------
   about: [
-    "I'm a **Full Stack Developer** building enterprise ERP products at VMA Soft Smart Software with AI Solutions. I work on web modules for store and outlet inventory operations — raw material and finished goods requests, stock issues, receipts, returns and wastage tracking — backed by **FastAPI and MongoDB**.",
-    "I've worked across the full development cycle: designing REST APIs, implementing **role-based access control**, building a **Flutter Android app** for the Purchase-to-Pay workflow, testing with Postman and Swagger, and supporting features in production.",
-    "I hold a **Master of Computer Applications** (with honors) from Jamal Mohamed College, Tiruchirappalli, where I also published a research paper on AI applications. I love crafting digital experiences with **clean code and creative design** — from client sites like Chalzart and Zayit Academy to full-stack apps like MediCare.",
+    "I'm a **Full Stack Developer** focused on building scalable, maintainable and user-centric software. I deliver end-to-end solutions — responsive front-ends with **React and Next.js**, robust back-end services with **FastAPI and Node.js**, and well-structured data layers using **MongoDB and SQL** databases.",
+    "My work spans the complete software development lifecycle: **RESTful API design**, secure authentication and **role-based access control**, cross-platform **mobile development with Flutter**, systematic testing, deployment and production support. I follow clean architecture and coding best practices so that every product stays reliable and easy to scale.",
+    "I hold a **Master of Computer Applications** (with honors) and continuously expand my expertise in emerging technologies, including AI-driven solutions. I am committed to delivering **high-quality, well-engineered software** that meets business objectives and provides an excellent user experience.",
   ],
-  currently: "Building ERP modules at VMA Soft Smart Software",
+  currently: "Developing full-stack web and mobile applications",
   stats: [
     { value: 1, suffix: "+", label: "Year of industry experience" },
     { value: 4, suffix: "", label: "ERP modules & apps delivered" },
@@ -158,7 +162,7 @@ export const portfolio = {
       live: "https://www.zayitacademy.com",
       colors: ["#7d8f69", "#d4b483"],
       domain: "zayitacademy.com",
-      image: "/projects/zayit.png",
+      image: "/projects/zayit.webp",
       featured: true,
     },
     {
@@ -170,7 +174,7 @@ export const portfolio = {
       live: "https://www.chalzart.in",
       colors: ["#a8743f", "#d4a24c"],
       domain: "chalzart.in",
-      image: "/projects/chalzart.png",
+      image: "/projects/chalzart.webp",
     },
     {
       title: "Store & Outlet ERP",
@@ -199,7 +203,7 @@ export const portfolio = {
       live: "https://healthcare-management-system-gamma.vercel.app/",
       colors: ["#3b82f6", "#06b6d4"],
       domain: "medicare",
-      image: "/projects/medicare.png",
+      image: "/projects/medicare.webp",
     },
     {
       title: "Shopy",
@@ -210,18 +214,7 @@ export const portfolio = {
       live: "https://shopy-olive.vercel.app/",
       colors: ["#0ea5e9", "#1e3a5f"],
       domain: "shopy",
-      image: "/projects/shopy.png",
-    },
-    {
-      title: "Streamix Chat",
-      category: "Web App",
-      description: "A full-stack real-time chat application with authentication and instant messaging over Socket.io, built with separate frontend and backend services for scalable messaging.",
-      tags: ["React", "Node.js", "Socket.io", "MongoDB", "JavaScript"],
-      github: "https://github.com/Mohamedyoonus/chat_app",
-      live: "https://chat-app-4lju.vercel.app/login",
-      colors: ["#a855f7", "#ec4899"],
-      domain: "streamix",
-      image: "/projects/chat.png",
+      image: "/projects/shopy.webp",
     },
     {
       title: "Wastage & Returns App",
@@ -285,18 +278,12 @@ export const portfolio = {
       role: "Master of Computer Applications (MCA)",
       company: "Jamal Mohamed College (Autonomous), Tiruchirappalli",
       period: "2023 — 2025",
-      highlights: [
-        "Graduated with **honors**",
-        "Published a **research paper on AI applications**",
-        "Lead developer for the college tech fest",
-      ],
     },
     {
       type: "education",
       role: "B.Sc. Computer Science",
       company: "Jamal Mohamed College (Autonomous), Tiruchirappalli",
       period: "2020 — 2023",
-      highlights: ["Specialized in web technologies", "Class representative for the CS department"],
     },
   ] satisfies Experience[],
 
